@@ -1,0 +1,716 @@
+
+
+Microchip MPLAB XC8 Assembler V2.31 build 20201012212115 
+                                                                                               Thu Oct 14 14:32:01 2021
+
+Microchip MPLAB XC8 C Compiler v2.31 (Free license) build 20201012212115 Og1 
+     1                           	processor	16F627A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	bssCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     7                           	psect	maintext,global,class=CODE,split=1,delta=2
+     8                           	psect	text1,local,class=CODE,merge=1,delta=2
+     9                           	psect	text2,local,class=CODE,merge=1,delta=2
+    10                           	psect	intentry,global,class=CODE,delta=2
+    11                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    12                           	dabs	1,0x7E,2
+    13  0000                     
+    14                           ; Version 2.20
+    15                           ; Generated 12/02/2020 GMT
+    16                           ; 
+    17                           ; Copyright © 2020, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    18                           ; All rights reserved.
+    19                           ; 
+    20                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    21                           ; 
+    22                           ; Redistribution and use in source and binary forms, with or without modification, are
+    23                           ; permitted provided that the following conditions are met:
+    24                           ; 
+    25                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    26                           ;        conditions and the following disclaimer.
+    27                           ; 
+    28                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    29                           ;        of conditions and the following disclaimer in the documentation and/or other
+    30                           ;        materials provided with the distribution.
+    31                           ; 
+    32                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    33                           ;        software without specific prior written permission.
+    34                           ; 
+    35                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    36                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    37                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    38                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    39                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    40                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    41                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    42                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    43                           ; 
+    44                           ; 
+    45                           ; Code-generator required, PIC16F627A Definitions
+    46                           ; 
+    47                           ; SFR Addresses
+    48  0000                     	;# 
+    49  0001                     	;# 
+    50  0002                     	;# 
+    51  0003                     	;# 
+    52  0004                     	;# 
+    53  0005                     	;# 
+    54  0006                     	;# 
+    55  000A                     	;# 
+    56  000B                     	;# 
+    57  000C                     	;# 
+    58  000E                     	;# 
+    59  000E                     	;# 
+    60  000F                     	;# 
+    61  0010                     	;# 
+    62  0011                     	;# 
+    63  0012                     	;# 
+    64  0015                     	;# 
+    65  0015                     	;# 
+    66  0016                     	;# 
+    67  0017                     	;# 
+    68  0018                     	;# 
+    69  0019                     	;# 
+    70  001A                     	;# 
+    71  001F                     	;# 
+    72  0081                     	;# 
+    73  0085                     	;# 
+    74  0086                     	;# 
+    75  008C                     	;# 
+    76  008E                     	;# 
+    77  0092                     	;# 
+    78  0098                     	;# 
+    79  0099                     	;# 
+    80  009A                     	;# 
+    81  009B                     	;# 
+    82  009C                     	;# 
+    83  009D                     	;# 
+    84  009F                     	;# 
+    85  0000                     	;# 
+    86  0001                     	;# 
+    87  0002                     	;# 
+    88  0003                     	;# 
+    89  0004                     	;# 
+    90  0005                     	;# 
+    91  0006                     	;# 
+    92  000A                     	;# 
+    93  000B                     	;# 
+    94  000C                     	;# 
+    95  000E                     	;# 
+    96  000E                     	;# 
+    97  000F                     	;# 
+    98  0010                     	;# 
+    99  0011                     	;# 
+   100  0012                     	;# 
+   101  0015                     	;# 
+   102  0015                     	;# 
+   103  0016                     	;# 
+   104  0017                     	;# 
+   105  0018                     	;# 
+   106  0019                     	;# 
+   107  001A                     	;# 
+   108  001F                     	;# 
+   109  0081                     	;# 
+   110  0085                     	;# 
+   111  0086                     	;# 
+   112  008C                     	;# 
+   113  008E                     	;# 
+   114  0092                     	;# 
+   115  0098                     	;# 
+   116  0099                     	;# 
+   117  009A                     	;# 
+   118  009B                     	;# 
+   119  009C                     	;# 
+   120  009D                     	;# 
+   121  009F                     	;# 
+   122  0006                     _PORTBbits	set	6
+   123  000B                     _INTCONbits	set	11
+   124  0006                     _PORTB	set	6
+   125  0005                     _PORTA	set	5
+   126  001F                     _CMCON	set	31
+   127  0081                     _OPTION_REGbits	set	129
+   128  0086                     _TRISB	set	134
+   129  0085                     _TRISA	set	133
+   130                           
+   131                           	psect	cinit
+   132  000B                     start_initialization:	
+   133                           ; #config settings
+   134                           
+   135  000B                     __initialization:
+   136                           
+   137                           ; Clear objects allocated to COMMON
+   138  000B  01F6               	clrf	__pbssCOMMON& (0+127)
+   139  000C  01F7               	clrf	(__pbssCOMMON+1)& (0+127)
+   140  000D                     end_of_initialization:	
+   141                           ;End of C runtime variable initialization code
+   142                           
+   143  000D                     __end_of__initialization:
+   144  000D  0183               	clrf	3
+   145  000E  2841               	ljmp	_main	;jump to C main() function
+   146                           
+   147                           	psect	bssCOMMON
+   148  0076                     __pbssCOMMON:
+   149  0076                     _rb5_changed:
+   150  0076                     	ds	1
+   151  0077                     _momentary:
+   152  0077                     	ds	1
+   153                           
+   154                           	psect	cstackCOMMON
+   155  0070                     __pcstackCOMMON:
+   156  0070                     ?_initialize_hw:
+   157  0070                     ?_interrupt_handler:	
+   158                           ; 1 bytes @ 0x0
+   159                           
+   160  0070                     ??_interrupt_handler:	
+   161                           ; 1 bytes @ 0x0
+   162                           
+   163  0070                     ?_main:	
+   164                           ; 1 bytes @ 0x0
+   165                           
+   166                           
+   167                           ; 1 bytes @ 0x0
+   168  0070                     	ds	4
+   169  0074                     ??_initialize_hw:
+   170  0074                     ??_main:	
+   171                           ; 1 bytes @ 0x4
+   172                           
+   173                           
+   174                           ; 1 bytes @ 0x4
+   175  0074                     	ds	1
+   176  0075                     main@PORTAshadow:
+   177                           
+   178                           ; 1 bytes @ 0x5
+   179  0075                     	ds	1
+   180                           
+   181                           	psect	maintext
+   182  0041                     __pmaintext:	
+   183 ;;
+   184 ;;Main: autosize = 0, tempsize = 1, incstack = 0, save=0
+   185 ;;
+   186 ;; *************** function _main *****************
+   187 ;; Defined at:
+   188 ;;		line 59 in file "main.c"
+   189 ;; Parameters:    Size  Location     Type
+   190 ;;		None
+   191 ;; Auto vars:     Size  Location     Type
+   192 ;;  PORTAshadow     1    5[COMMON] unsigned char 
+   193 ;; Return value:  Size  Location     Type
+   194 ;;                  1    wreg      void 
+   195 ;; Registers used:
+   196 ;;		wreg, status,2, status,0, pclath, cstack
+   197 ;; Tracked objects:
+   198 ;;		On entry : B00/0
+   199 ;;		On exit  : 0/0
+   200 ;;		Unchanged: 0/0
+   201 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   202 ;;      Params:         0       0       0       0
+   203 ;;      Locals:         1       0       0       0
+   204 ;;      Temps:          1       0       0       0
+   205 ;;      Totals:         2       0       0       0
+   206 ;;Total ram usage:        2 bytes
+   207 ;; Hardware stack levels required when called:    2
+   208 ;; This function calls:
+   209 ;;		_initialize_hw
+   210 ;; This function is called by:
+   211 ;;		Startup code after reset
+   212 ;; This function uses a non-reentrant model
+   213 ;;
+   214                           
+   215                           
+   216                           ;psect for function _main
+   217  0041                     _main:
+   218  0041                     l677:	
+   219                           ;incstack = 0
+   220                           ; Regs used in _main: [wreg+status,2+status,0+pclath+cstack]
+   221                           
+   222                           
+   223                           ;main.c: 60:     initialize_hw();
+   224  0041  2067               	fcall	_initialize_hw
+   225  0042                     l679:
+   226                           
+   227                           ;main.c: 62:     unsigned char PORTAshadow = 0x00;
+   228  0042  01F5               	clrf	main@PORTAshadow
+   229  0043                     l681:
+   230                           
+   231                           ;main.c: 65:         if (momentary == 0) {
+   232  0043  0877               	movf	_momentary,w
+   233  0044  1D03               	btfss	3,2
+   234  0045  2847               	goto	u71
+   235  0046  2848               	goto	u70
+   236  0047                     u71:
+   237  0047  284B               	goto	l685
+   238  0048                     u70:
+   239  0048                     l683:
+   240                           
+   241                           ;main.c: 66:             ((PORTAshadow) |= 1UL << (1));
+   242  0048  14F5               	bsf	main@PORTAshadow,1
+   243                           
+   244                           ;main.c: 67:             ((PORTAshadow) |= 1UL << (2));
+   245  0049  1575               	bsf	main@PORTAshadow,2
+   246                           
+   247                           ;main.c: 68:         } else {
+   248  004A  2853               	goto	l687
+   249  004B                     l685:
+   250                           
+   251                           ;main.c: 69:             ((PORTAshadow) &= ~(1UL << (1)));
+   252  004B  30FD               	movlw	253
+   253  004C  00F4               	movwf	??_main
+   254  004D  0874               	movf	??_main,w
+   255  004E  05F5               	andwf	main@PORTAshadow,f
+   256                           
+   257                           ;main.c: 70:             ((PORTAshadow) &= ~(1UL << (2)));
+   258  004F  30FB               	movlw	251
+   259  0050  00F4               	movwf	??_main
+   260  0051  0874               	movf	??_main,w
+   261  0052  05F5               	andwf	main@PORTAshadow,f
+   262  0053                     l687:
+   263                           
+   264                           ;main.c: 73:         if (PORTBbits.RB4) {
+   265  0053  1283               	bcf	3,5	;RP0=0, select bank0
+   266  0054  1303               	bcf	3,6	;RP1=0, select bank0
+   267  0055  1E06               	btfss	6,4	;volatile
+   268  0056  2858               	goto	u81
+   269  0057  2859               	goto	u80
+   270  0058                     u81:
+   271  0058  285B               	goto	l42
+   272  0059                     u80:
+   273  0059                     l689:
+   274                           
+   275                           ;main.c: 74:             ((PORTAshadow) |= 1UL << (0));
+   276  0059  1475               	bsf	main@PORTAshadow,0
+   277                           
+   278                           ;main.c: 75:         } else if (!PORTBbits.RB4) {
+   279  005A  2863               	goto	l693
+   280  005B                     l42:
+   281  005B  1A06               	btfsc	6,4	;volatile
+   282  005C  285E               	goto	u91
+   283  005D  285F               	goto	u90
+   284  005E                     u91:
+   285  005E  2863               	goto	l693
+   286  005F                     u90:
+   287  005F                     l691:
+   288                           
+   289                           ;main.c: 76:             ((PORTAshadow) &= ~(1UL << (0)));
+   290  005F  30FE               	movlw	254
+   291  0060  00F4               	movwf	??_main
+   292  0061  0874               	movf	??_main,w
+   293  0062  05F5               	andwf	main@PORTAshadow,f
+   294  0063                     l693:
+   295                           
+   296                           ;main.c: 79:         PORTA = PORTAshadow;
+   297  0063  0875               	movf	main@PORTAshadow,w
+   298  0064  0085               	movwf	5	;volatile
+   299  0065  2843               	goto	l681
+   300  0066  280A               	ljmp	start
+   301  0067                     __end_of_main:
+   302                           
+   303                           	psect	text1
+   304  0067                     __ptext1:	
+   305 ;; *************** function _initialize_hw *****************
+   306 ;; Defined at:
+   307 ;;		line 26 in file "main.c"
+   308 ;; Parameters:    Size  Location     Type
+   309 ;;		None
+   310 ;; Auto vars:     Size  Location     Type
+   311 ;;		None
+   312 ;; Return value:  Size  Location     Type
+   313 ;;                  1    wreg      void 
+   314 ;; Registers used:
+   315 ;;		wreg, status,2
+   316 ;; Tracked objects:
+   317 ;;		On entry : 0/0
+   318 ;;		On exit  : 0/0
+   319 ;;		Unchanged: 0/0
+   320 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   321 ;;      Params:         0       0       0       0
+   322 ;;      Locals:         0       0       0       0
+   323 ;;      Temps:          0       0       0       0
+   324 ;;      Totals:         0       0       0       0
+   325 ;;Total ram usage:        0 bytes
+   326 ;; Hardware stack levels used:    1
+   327 ;; Hardware stack levels required when called:    1
+   328 ;; This function calls:
+   329 ;;		Nothing
+   330 ;; This function is called by:
+   331 ;;		_main
+   332 ;; This function uses a non-reentrant model
+   333 ;;
+   334                           
+   335                           
+   336                           ;psect for function _initialize_hw
+   337  0067                     _initialize_hw:
+   338  0067                     l639:	
+   339                           ;incstack = 0
+   340                           ; Regs used in _initialize_hw: [wreg+status,2]
+   341                           
+   342                           
+   343                           ;main.c: 27:     CMCON = 0x07;
+   344  0067  3007               	movlw	7
+   345  0068  1283               	bcf	3,5	;RP0=0, select bank0
+   346  0069  1303               	bcf	3,6	;RP1=0, select bank0
+   347  006A  009F               	movwf	31	;volatile
+   348  006B                     l641:
+   349                           
+   350                           ;main.c: 30:     PORTA = 0x00;
+   351  006B  0185               	clrf	5	;volatile
+   352  006C                     l643:
+   353                           
+   354                           ;main.c: 31:     TRISA = 0x00;
+   355  006C  1683               	bsf	3,5	;RP0=1, select bank1
+   356  006D  1303               	bcf	3,6	;RP1=0, select bank1
+   357  006E  0185               	clrf	5	;volatile
+   358  006F                     l645:
+   359                           
+   360                           ;main.c: 34:     PORTB = 0x00;
+   361  006F  1283               	bcf	3,5	;RP0=0, select bank0
+   362  0070  1303               	bcf	3,6	;RP1=0, select bank0
+   363  0071  0186               	clrf	6	;volatile
+   364  0072                     l647:
+   365                           
+   366                           ;main.c: 35:     TRISB = 0xFF;
+   367  0072  30FF               	movlw	255
+   368  0073  1683               	bsf	3,5	;RP0=1, select bank1
+   369  0074  1303               	bcf	3,6	;RP1=0, select bank1
+   370  0075  0086               	movwf	6	;volatile
+   371  0076                     l649:
+   372                           
+   373                           ;main.c: 36:     OPTION_REGbits.nRBPU = 1;
+   374  0076  1781               	bsf	1,7	;volatile
+   375  0077                     l651:
+   376                           
+   377                           ;main.c: 39:     INTCONbits.RBIF = 0;
+   378  0077  100B               	bcf	11,0	;volatile
+   379  0078                     l653:
+   380                           
+   381                           ;main.c: 40:     INTCONbits.RBIE = 1;
+   382  0078  158B               	bsf	11,3	;volatile
+   383  0079                     l655:
+   384                           
+   385                           ;main.c: 41:     OPTION_REGbits.INTEDG = 1;
+   386  0079  1701               	bsf	1,6	;volatile
+   387  007A                     l657:
+   388                           
+   389                           ;main.c: 42:     INTCONbits.GIE = 1;
+   390  007A  178B               	bsf	11,7	;volatile
+   391  007B                     l659:
+   392                           
+   393                           ;main.c: 43:     INTCONbits.PEIE = 1;
+   394  007B  170B               	bsf	11,6	;volatile
+   395  007C                     l25:
+   396  007C  0008               	return
+   397  007D                     __end_of_initialize_hw:
+   398                           
+   399                           	psect	text2
+   400  000F                     __ptext2:	
+   401 ;; *************** function _interrupt_handler *****************
+   402 ;; Defined at:
+   403 ;;		line 46 in file "main.c"
+   404 ;; Parameters:    Size  Location     Type
+   405 ;;		None
+   406 ;; Auto vars:     Size  Location     Type
+   407 ;;		None
+   408 ;; Return value:  Size  Location     Type
+   409 ;;                  1    wreg      void 
+   410 ;; Registers used:
+   411 ;;		wreg, status,2, status,0
+   412 ;; Tracked objects:
+   413 ;;		On entry : 0/0
+   414 ;;		On exit  : 0/0
+   415 ;;		Unchanged: 0/0
+   416 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   417 ;;      Params:         0       0       0       0
+   418 ;;      Locals:         0       0       0       0
+   419 ;;      Temps:          4       0       0       0
+   420 ;;      Totals:         4       0       0       0
+   421 ;;Total ram usage:        4 bytes
+   422 ;; Hardware stack levels used:    1
+   423 ;; This function calls:
+   424 ;;		Nothing
+   425 ;; This function is called by:
+   426 ;;		Interrupt level 1
+   427 ;; This function uses a non-reentrant model
+   428 ;;
+   429                           
+   430                           
+   431                           ;psect for function _interrupt_handler
+   432  000F                     _interrupt_handler:
+   433  000F                     i1l661:
+   434                           
+   435                           ;main.c: 47:     if (INTCONbits.RBIF) {
+   436  000F  1C0B               	btfss	11,0	;volatile
+   437  0010  2812               	goto	u1_21
+   438  0011  2813               	goto	u1_20
+   439  0012                     u1_21:
+   440  0012  283A               	goto	i1l34
+   441  0013                     u1_20:
+   442  0013                     i1l663:
+   443                           
+   444                           ;main.c: 48:         if (PORTBbits.RB5 && !rb5_changed) {
+   445  0013  1283               	bcf	3,5	;RP0=0, select bank0
+   446  0014  1303               	bcf	3,6	;RP1=0, select bank0
+   447  0015  1E86               	btfss	6,5	;volatile
+   448  0016  2818               	goto	u2_21
+   449  0017  2819               	goto	u2_20
+   450  0018                     u2_21:
+   451  0018  2834               	goto	i1l31
+   452  0019                     u2_20:
+   453  0019                     i1l665:
+   454  0019  0876               	movf	_rb5_changed,w
+   455  001A  1D03               	btfss	3,2
+   456  001B  281D               	goto	u3_21
+   457  001C  281E               	goto	u3_20
+   458  001D                     u3_21:
+   459  001D  2834               	goto	i1l31
+   460  001E                     u3_20:
+   461  001E                     i1l667:
+   462                           
+   463                           ;main.c: 49:             momentary = !momentary;
+   464  001E  0877               	movf	_momentary,w
+   465  001F  1903               	btfsc	3,2
+   466  0020  2822               	goto	u4_21
+   467  0021  2824               	goto	u4_20
+   468  0022                     u4_21:
+   469  0022  3001               	movlw	1
+   470  0023  2825               	goto	u5_20
+   471  0024                     u4_20:
+   472  0024  3000               	movlw	0
+   473  0025                     u5_20:
+   474  0025  00F0               	movwf	??_interrupt_handler
+   475  0026  0870               	movf	??_interrupt_handler,w
+   476  0027  00F7               	movwf	_momentary
+   477  0028                     i1l669:
+   478                           
+   479                           ;main.c: 50:             rb5_changed = 1;
+   480  0028  01F6               	clrf	_rb5_changed
+   481  0029  0AF6               	incf	_rb5_changed,f
+   482  002A                     i1l671:
+   483                           
+   484                           ;main.c: 51:             _delay((unsigned long)((50)*(4000000/4000.0)));
+   485  002A  3041               	movlw	65
+   486  002B  00F1               	movwf	??_interrupt_handler+1
+   487  002C  30EE               	movlw	238
+   488  002D  00F0               	movwf	??_interrupt_handler
+   489  002E                     u10_27:
+   490  002E  0BF0               	decfsz	??_interrupt_handler,f
+   491  002F  282E               	goto	u10_27
+   492  0030  0BF1               	decfsz	??_interrupt_handler+1,f
+   493  0031  282E               	goto	u10_27
+   494  0032  0000               	nop
+   495                           
+   496                           ;main.c: 52:         } else if (!PORTBbits.RB5) {
+   497  0033  2839               	goto	i1l675
+   498  0034                     i1l31:
+   499  0034  1A86               	btfsc	6,5	;volatile
+   500  0035  2837               	goto	u6_21
+   501  0036  2838               	goto	u6_20
+   502  0037                     u6_21:
+   503  0037  2839               	goto	i1l675
+   504  0038                     u6_20:
+   505  0038                     i1l673:
+   506                           
+   507                           ;main.c: 53:             rb5_changed = 0;
+   508  0038  01F6               	clrf	_rb5_changed
+   509  0039                     i1l675:
+   510                           
+   511                           ;main.c: 55:         INTCONbits.RBIF = 0;
+   512  0039  100B               	bcf	11,0	;volatile
+   513  003A                     i1l34:
+   514  003A  0873               	movf	??_interrupt_handler+3,w
+   515  003B  008A               	movwf	10
+   516  003C  0E72               	swapf	??_interrupt_handler+2,w
+   517  003D  0083               	movwf	3
+   518  003E  0EFE               	swapf	btemp,f
+   519  003F  0E7E               	swapf	btemp,w
+   520  0040  0009               	retfie
+   521  0041                     __end_of_interrupt_handler:
+   522  007E                     btemp	set	126	;btemp
+   523  007E                     wtemp0	set	126
+   524                           
+   525                           	psect	intentry
+   526  0004                     __pintentry:	
+   527                           ;incstack = 0
+   528                           ; Regs used in _interrupt_handler: [wreg+status,2+status,0]
+   529                           
+   530  0004                     interrupt_function:
+   531  007E                     saved_w	set	btemp
+   532  0004  00FE               	movwf	btemp
+   533  0005  0E03               	swapf	3,w
+   534  0006  00F2               	movwf	??_interrupt_handler+2
+   535  0007  080A               	movf	10,w
+   536  0008  00F3               	movwf	??_interrupt_handler+3
+   537  0009  280F               	ljmp	_interrupt_handler
+   538                           
+   539                           	psect	config
+   540                           
+   541                           ;Config register CONFIG @ 0x2007
+   542                           ;	Oscillator Selection bits
+   543                           ;	FOSC = INTOSCIO, INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function 
+      +                          on RA7/OSC1/CLKIN
+   544                           ;	Watchdog Timer Enable bit
+   545                           ;	WDTE = OFF, WDT disabled
+   546                           ;	Power-up Timer Enable bit
+   547                           ;	PWRTE = OFF, PWRT disabled
+   548                           ;	RA5/MCLR/VPP Pin Function Select bit
+   549                           ;	MCLRE = OFF, RA5/MCLR/VPP pin function is digital input, MCLR internally tied to VDD
+   550                           ;	Brown-out Detect Enable bit
+   551                           ;	BOREN = OFF, BOD disabled
+   552                           ;	Low-Voltage Programming Enable bit
+   553                           ;	LVP = OFF, RB4/PGM pin has digital I/O function, HV on MCLR must be used for programmi
+      +                          ng
+   554                           ;	Data EE Memory Code Protection bit
+   555                           ;	CPD = OFF, Data memory code protection off
+   556                           ;	Flash Program Memory Code Protection bit
+   557                           ;	CP = OFF, Code protection off
+   558  2007                     	org	8199
+   559  2007  3F18               	dw	16152
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         2
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      6       8
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK2            48      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    None.
+
+Critical Paths under _interrupt_handler in COMMON
+
+    None.
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _interrupt_handler in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _interrupt_handler in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _interrupt_handler in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0      15
+                                              4 COMMON     2     2      0
+                      _initialize_hw
+ ---------------------------------------------------------------------------------
+ (1) _initialize_hw                                        0     0      0       0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 1
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (2) _interrupt_handler                                    4     4      0       0
+                                              0 COMMON     4     4      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _initialize_hw
+
+ _interrupt_handler (ROOT)
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      6       8       1       57.1%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BANK0               50      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0       8       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK2            30      0       0       8        0.0%
+BANK2               30      0       0       9        0.0%
+DATA                 0      0       8      10        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.31 build 20201012212115 
+Symbol Table                                                                                   Thu Oct 14 14:32:01 2021
+
+                        l25 007C                          l42 005B                          u70 0048  
+                        u71 0047                          u80 0059                          u81 0058  
+                        u90 005F                          u91 005E                         l641 006B  
+                       l651 0077                         l643 006C                         l653 0078  
+                       l645 006F                         l655 0079                         l647 0072  
+                       l639 0067                         l657 007A                         l649 0076  
+                       l681 0043                         l659 007B                         l691 005F  
+                       l683 0048                         l693 0063                         l685 004B  
+                       l677 0041                         l687 0053                         l679 0042  
+                       l689 0059                        i1l31 0034                        i1l34 003A  
+                      u1_20 0013                        u1_21 0012                        u2_20 0019  
+                      u2_21 0018                        u3_20 001E                        u3_21 001D  
+                      u4_20 0024                        u4_21 0022                        u5_20 0025  
+                      u6_20 0038                        u6_21 0037                        _main 0041  
+                      btemp 007E                        start 000A                       ?_main 0070  
+                     _CMCON 001F                       i1l661 000F                       i1l671 002A  
+                     i1l663 0013                       i1l673 0038                       i1l665 0019  
+                     i1l675 0039                       i1l667 001E                       i1l669 0028  
+                     u10_27 002E                       _PORTA 0005                       _PORTB 0006  
+                     _TRISA 0085                       _TRISB 0086                       pclath 000A  
+                     status 0003                       wtemp0 007E             __initialization 000B  
+              __end_of_main 0067                      ??_main 0074                      saved_w 007E  
+    __size_of_initialize_hw 0016     __end_of__initialization 000D              __pcstackCOMMON 0070  
+            _OPTION_REGbits 0081                  __pmaintext 0041               _initialize_hw 0067  
+                __pintentry 0004              ?_initialize_hw 0070                     __ptext1 0067  
+                   __ptext2 000F        end_of_initialization 000D                   _PORTBbits 0006  
+           ??_initialize_hw 0074         start_initialization 000B                 _rb5_changed 0076  
+               __pbssCOMMON 0076                   ___latbits 0000           _interrupt_handler 000F  
+        ?_interrupt_handler 0070         ??_interrupt_handler 0070           interrupt_function 0004  
+                 _momentary 0077   __end_of_interrupt_handler 0041               __size_of_main 0026  
+     __end_of_initialize_hw 007D             main@PORTAshadow 0075  __size_of_interrupt_handler 0032  
+                _INTCONbits 000B                    intlevel1 0000  
